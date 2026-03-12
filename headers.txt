@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Headers: content-type
+Access-Control-Allow-Origin: *
+Age: 2072
+Cache-Control: public, max-age=2592000
+Content-Disposition: inline; filename="%EB%8D%94%EC%84%9C%EC%9A%B8%EC%B9%98%EA%B3%BC.mp4"
+Content-Length: 14152862
+Content-Security-Policy: default-src 'none'; media-src 'self'; style-src 'unsafe-inline'; img-src 'self'
+Content-Type: video/mp4
+Date: Thu, 12 Mar 2026 17:48:22 GMT
+Etag: "d96aa87ed5e1fd4e54544ee6fcc77929"
+Last-Modified: Thu, 12 Mar 2026 17:13:49 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+X-Content-Type-Options: nosniff
+X-Vercel-Cache: HIT
+X-Vercel-Id: icn1::hj7m4-1773337702287-17dc1a7a09db
+
