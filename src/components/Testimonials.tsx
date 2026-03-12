@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 
 type TestimonialData = {
@@ -37,61 +36,18 @@ const testimonials: TestimonialData[] = [
   },
 ];
 
-function TestimonialVideo({
-  item,
-}: {
-  item: TestimonialData;
-}) {
-  const [hasError, setHasError] = useState(false);
-
+function TestimonialVideo({ item }: { item: TestimonialData }) {
   return (
     <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden border-b border-[var(--color-border)] group/video">
-      {!hasError ? (
-        <video
-          controls
-          playsInline
-          preload="metadata"
-          crossOrigin="anonymous"
-          className="w-full h-full object-cover opacity-90 group-hover/video:opacity-100 transition-opacity"
-          onError={() => setHasError(true)}
-        >
-          <source src={item.videoPath} type="video/mp4" />
-          해당 브라우저에서 지원하지 않는 영상 포맷입니다.
-        </video>
-      ) : (
-        <div className="absolute inset-0 bg-gray-900 flex flex-col items-center justify-center text-center p-6">
-          <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-3 text-red-400">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
-          </div>
-          <p className="text-gray-300 text-sm font-medium">
-            영상을 재생할 수 없습니다.
-          </p>
-          <p className="text-gray-500 text-xs mt-1 mb-4">
-            파일 포맷이 브라우저에서 지원되지 않거나 손상되었을 수 있습니다.
-          </p>
-          <a
-            href={item.videoPath}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center rounded-lg bg-[var(--color-primary-500)] px-4 py-2 text-sm font-semibold text-white hover:bg-[var(--color-primary-400)] transition-colors"
-          >
-            영상 직접 열기
-          </a>
-        </div>
-      )}
+      <video
+        src={item.videoPath}
+        controls
+        playsInline
+        preload="metadata"
+        className="w-full h-full object-cover opacity-90 group-hover/video:opacity-100 transition-opacity"
+      >
+        해당 브라우저에서 지원하지 않는 영상 포맷입니다.
+      </video>
     </div>
   );
 }
