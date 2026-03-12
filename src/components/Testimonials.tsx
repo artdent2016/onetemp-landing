@@ -36,26 +36,10 @@ const testimonials: TestimonialData[] = [
   },
 ];
 
-function TestimonialVideo({ item }: { item: TestimonialData }) {
-  return (
-    <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden border-b border-[var(--color-border)] group/video">
-      <video
-        src={item.videoPath}
-        controls
-        playsInline
-        preload="metadata"
-        className="w-full h-full object-cover opacity-90 group-hover/video:opacity-100 transition-opacity"
-      >
-        해당 브라우저에서 지원하지 않는 영상 포맷입니다.
-      </video>
-    </div>
-  );
-}
-
 export default function Testimonials() {
   return (
     <section className="py-24 relative bg-[var(--color-surface)]">
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-[var(--color-primary-600)]/10 blur-[120px] rounded-full pointer-events-none -translate-y-1/2"></div>
+      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-[var(--color-primary-600)]/10 blur-[120px] rounded-full pointer-events-none -translate-y-1/2" />
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <div className="text-center mb-16">
@@ -79,7 +63,15 @@ export default function Testimonials() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass rounded-2xl border border-[var(--color-border)] overflow-hidden flex flex-col hover:border-[var(--color-primary-500)]/30 transition-colors group shadow-lg"
             >
-              <TestimonialVideo item={item} />
+              <div className="relative aspect-video bg-black overflow-hidden border-b border-[var(--color-border)]">
+                <video
+                  src={item.videoPath}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
               <div className="p-6 bg-[var(--color-background)]/50 backdrop-blur-sm flex-grow">
                 <h3 className="text-xl font-bold mb-2 text-gray-100">
@@ -91,7 +83,7 @@ export default function Testimonials() {
                   </span>
                   {item.doctorName && (
                     <>
-                      <span className="w-1 h-1 rounded-full bg-gray-600"></span>
+                      <span className="w-1 h-1 rounded-full bg-gray-600" />
                       <span>{item.doctorName}</span>
                     </>
                   )}
