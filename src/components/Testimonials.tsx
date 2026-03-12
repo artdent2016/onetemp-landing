@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 type TestimonialData = {
@@ -7,33 +8,97 @@ type TestimonialData = {
   clinicName?: string;
   doctorName?: string;
   videoPath: string;
-  thumbnailPath?: string;
 };
 
 const testimonials: TestimonialData[] = [
   {
+    title: "원템프 사용 후기",
     clinicName: "더서울치과",
-    videoPath: "/videos/더서울치과.mp4",
+    videoPath:
+      "https://ujzqqjf9n116mccj.public.blob.vercel-storage.com/%EB%8D%94%EC%84%9C%EC%9A%B8%EC%B9%98%EA%B3%BC.mp4",
   },
   {
     title: "원템프 제작 후기",
     clinicName: "서울드림치과",
-    videoPath: "/videos/서울드림치과 제작 영상.mp4",
+    videoPath:
+      "https://ujzqqjf9n116mccj.public.blob.vercel-storage.com/%EC%84%9C%EC%9A%B8%EB%93%9C%EB%A6%BC%EC%B9%98%EA%B3%BC%20%EC%A0%9C%EC%9E%91%20%EC%98%81%EC%83%81.mp4",
   },
   {
+    title: "원템프 사용 후기",
     clinicName: "서울드림치과",
-    videoPath: "/videos/서울드림치과.mp4",
+    videoPath:
+      "https://ujzqqjf9n116mccj.public.blob.vercel-storage.com/%EC%84%9C%EC%9A%B8%EB%93%9C%EB%A6%BC%EC%B9%98%EA%B3%BC.mp4",
   },
   {
-    clinicName: "연세SK치과",
-    videoPath: "/videos/연세sk치과.mp4",
-  }
+    title: "원템프 사용 후기",
+    clinicName: "연세sk치과",
+    videoPath:
+      "https://ujzqqjf9n116mccj.public.blob.vercel-storage.com/%EC%97%B0%EC%84%B8sk%EC%B9%98%EA%B3%BC.mp4",
+  },
 ];
+
+function TestimonialVideo({
+  item,
+}: {
+  item: TestimonialData;
+}) {
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden border-b border-[var(--color-border)] group/video">
+      {!hasError ? (
+        <video
+          controls
+          playsInline
+          preload="metadata"
+          crossOrigin="anonymous"
+          className="w-full h-full object-cover opacity-90 group-hover/video:opacity-100 transition-opacity"
+          onError={() => setHasError(true)}
+        >
+          <source src={item.videoPath} type="video/mp4" />
+          해당 브라우저에서 지원하지 않는 영상 포맷입니다.
+        </video>
+      ) : (
+        <div className="absolute inset-0 bg-gray-900 flex flex-col items-center justify-center text-center p-6">
+          <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-3 text-red-400">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+          </div>
+          <p className="text-gray-300 text-sm font-medium">
+            영상을 재생할 수 없습니다.
+          </p>
+          <p className="text-gray-500 text-xs mt-1 mb-4">
+            파일 포맷이 브라우저에서 지원되지 않거나 손상되었을 수 있습니다.
+          </p>
+          <a
+            href={item.videoPath}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center rounded-lg bg-[var(--color-primary-500)] px-4 py-2 text-sm font-semibold text-white hover:bg-[var(--color-primary-400)] transition-colors"
+          >
+            영상 직접 열기
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Testimonials() {
   return (
     <section className="py-24 relative bg-[var(--color-surface)]">
-      {/* Decorative Background Element */}
       <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-[var(--color-primary-600)]/10 blur-[120px] rounded-full pointer-events-none -translate-y-1/2"></div>
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
@@ -42,7 +107,8 @@ export default function Testimonials() {
             실제 사용 <span className="text-[var(--color-primary-500)]">치과 원장님 후기</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            원템프를 실제로 사용 중인 치과 원장님의 후기를 영상으로 확인해보세요. <br/>
+            원템프를 실제로 사용 중인 치과 원장님의 후기를 영상으로 확인해보세요.
+            <br />
             생생한 현장의 목소리가 원템프의 가치를 증명합니다.
           </p>
         </div>
@@ -50,46 +116,15 @@ export default function Testimonials() {
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((item, index) => (
             <motion.div
-              key={index}
+              key={`${item.clinicName}-${index}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass rounded-2xl border border-[var(--color-border)] overflow-hidden flex flex-col hover:border-[var(--color-primary-500)]/30 transition-colors group shadow-lg"
             >
-              {/* Video Container */}
-              <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden border-b border-[var(--color-border)] group/video">
-                <video 
-                  src={item.videoPath}
-                  controls 
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover opacity-90 group-hover/video:opacity-100 transition-opacity"
-                  onError={(e) => {
-                    const target = e.target as HTMLVideoElement;
-                    target.style.display = 'none'; // Hide broken video
-                    const fallback = target.nextElementSibling as HTMLElement;
-                    if (fallback) fallback.style.display = 'flex'; // Show fallback
-                  }}
-                >
-                  <source src={item.videoPath} type="video/mp4" />
-                  해당 브라우저에서 지원하지 않는 영상 포맷입니다.
-                </video>
-                
-                {/* Fallback Error UI (Hidden by default, shown by onError) */}
-                <div 
-                  className="absolute inset-0 bg-gray-900 hidden flex-col items-center justify-center text-center p-6"
-                  style={{ display: 'none' }}
-                >
-                  <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-3 text-red-400">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                  </div>
-                  <p className="text-gray-300 text-sm font-medium">영상을 재생할 수 없습니다.</p>
-                  <p className="text-gray-500 text-xs mt-1">파일 포맷이 브라우저에서 지원되지 않거나 손상되었을 수 있습니다.</p>
-                </div>
-              </div>
-              
-              {/* Text Content */}
+              <TestimonialVideo item={item} />
+
               <div className="p-6 bg-[var(--color-background)]/50 backdrop-blur-sm flex-grow">
                 <h3 className="text-xl font-bold mb-2 text-gray-100">
                   {item.title || "원템프 사용 후기"}
