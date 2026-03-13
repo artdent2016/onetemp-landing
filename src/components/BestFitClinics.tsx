@@ -33,13 +33,25 @@ export default function BestFitClinics() {
                 원템프는 진료 효율을 높이고 비용을 절감하고자 하는
                 모든 스마트한 치과 병원에 완벽한 솔루션을 제공합니다.
               </p>
-              
+                          
               <div className="aspect-video bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden relative group">
-                {/* Image Placeholder */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-[var(--color-surface)] flex flex-col items-center justify-center">
-                  <AlertCircle className="w-12 h-12 text-gray-500 mb-2 opacity-50" />
-                  <p className="text-gray-500 text-sm">치과 진료실 및 3D 장비 활용 이미지 (Placeholder)</p>
-                </div>
+                <img
+                  src="/clinic-usage.png"
+                  alt="치과 장비 및 3D 스캐너 활용 이미지"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    // Fallback visual in case the user hasn't uploaded the image yet
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.parentElement!.innerHTML = `
+                      <div class="absolute inset-0 bg-gradient-to-br from-gray-800 to-[var(--color-surface)] flex flex-col items-center justify-center">
+                        <p class="text-[var(--color-primary-400)] text-sm font-medium p-4 text-center">
+                          이미지를 public 폴더에<br/>'clinic-usage.png'로 저장해 주세요.
+                        </p>
+                      </div>
+                    `;
+                  }}
+                />
               </div>
             </motion.div>
           </div>
