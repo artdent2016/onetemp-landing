@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
@@ -96,9 +97,9 @@ export default function Pricing() {
               </li>
             </ul>
             
-            <button className="w-full py-4 bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-500)] text-white rounded-xl font-semibold transition-all shadow-[0_0_20px_rgba(20,184,166,0.3)]">
+            <Link href="/order?source=pricing-starter-package&package=starter-package" className="w-full py-4 bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-500)] text-white rounded-xl font-semibold transition-all shadow-[0_0_20px_rgba(20,184,166,0.3)] block text-center">
               스타터 패키지 구매하기
-            </button>
+            </Link>
           </motion.div>
         </div>
       </div>

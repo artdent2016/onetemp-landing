@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Printer } from "lucide-react";
 
@@ -53,13 +54,13 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <button className="w-full sm:w-auto px-8 py-4 bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-500)] text-white rounded-xl font-semibold transition-all flex items-center justify-center gap-2 group">
+            <Link href="/order?source=hero-120-crown-package&package=120-crown" className="w-full sm:w-auto px-8 py-4 bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-500)] text-white rounded-xl font-semibold transition-all flex items-center justify-center gap-2 group">
               120크라운 패키지 시작하기
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 glass hover:bg-white/10 text-white rounded-xl font-semibold transition-all">
+            </Link>
+            <Link href="/contact?source=hero-consultation" className="w-full sm:w-auto px-8 py-4 glass hover:bg-white/10 text-white rounded-xl font-semibold transition-all flex justify-center">
               서비스 상담 신청
-            </button>
+            </Link>
           </motion.div>
         </div>
 

@@ -38,7 +38,7 @@ const testimonials: TestimonialData[] = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 relative bg-[var(--color-surface)]">
+    <section id="testimonials" className="py-24 relative bg-[var(--color-surface)]">
       <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-[var(--color-primary-600)]/10 blur-[120px] rounded-full pointer-events-none -translate-y-1/2" />
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">

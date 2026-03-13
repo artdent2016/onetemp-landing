@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -31,13 +32,13 @@ export default function CTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button className="w-full sm:w-auto px-10 py-5 bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-500)] text-white rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-3 group shadow-[0_0_30px_rgba(20,184,166,0.3)] hover:shadow-[0_0_40px_rgba(20,184,166,0.5)] hover:-translate-y-1">
+            <Link href="/order?source=cta-starter-package&package=starter-package" className="w-full sm:w-auto px-10 py-5 bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-500)] text-white rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-3 group shadow-[0_0_30px_rgba(20,184,166,0.3)] hover:shadow-[0_0_40px_rgba(20,184,166,0.5)] hover:-translate-y-1">
               스타터 패키지 도입하기
               <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="w-full sm:w-auto px-10 py-5 glass hover:bg-white/10 text-white rounded-xl font-bold text-lg transition-all hover:-translate-y-1">
+            </Link>
+            <Link href="/contact?source=cta-consultation" className="w-full sm:w-auto px-10 py-5 glass hover:bg-white/10 text-white rounded-xl font-bold text-lg transition-all hover:-translate-y-1 flex justify-center">
               비대면 서비스 상담 신청
-            </button>
+            </Link>
           </div>
           
         </motion.div>

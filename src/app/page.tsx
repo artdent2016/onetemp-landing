@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
 import HowItWorks from "@/components/HowItWorks";
@@ -22,11 +23,12 @@ export default function Home() {
             <a href="#benefits" className="hover:text-white transition-colors">도입 혜택</a>
             <a href="#how-it-works" className="hover:text-white transition-colors">이용 방법</a>
             <a href="#pricing" className="hover:text-white transition-colors">가격 안내</a>
+            <a href="#testimonials" className="hover:text-white transition-colors">이용 후기</a>
             <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
           </div>
-          <button className="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+          <Link href="/contact?source=header-inquiry" className="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
             도입 문의
-          </button>
+          </Link>
         </div>
       </nav>
 
