@@ -65,7 +65,7 @@ export default function Testimonials() {
             >
               <div className="relative aspect-video bg-black overflow-hidden border-b border-[var(--color-border)]">
                 <video
-                  src={item.videoPath}
+                  src={`${item.videoPath}#t=0.001`}
                   controls
                   playsInline
                   preload="metadata"

@@ -16,7 +16,7 @@ export default function BestFitClinics() {
     <section className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
-          
+
           {/* Left / Title area */}
           <div className="w-full lg:w-1/2">
             <motion.div
@@ -33,7 +33,7 @@ export default function BestFitClinics() {
                 원템프는 진료 효율을 높이고 비용을 절감하고자 하는
                 모든 스마트한 치과 병원에 완벽한 솔루션을 제공합니다.
               </p>
-                          
+
               <div className="aspect-video bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden relative group">
                 <img
                   src="/clinic-usage.png"
